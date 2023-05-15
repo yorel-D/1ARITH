@@ -72,3 +72,13 @@ def dechiffrer_texte(cylindre, cle, texte):
     texte_dechiffre = [cylindre[cle[i]][(trouver_position(enlever_ponctuation(texte)[i], cylindre[cle[i]])) - 6] for i in range(len(cylindre) - 1)]
     return ''.join(texte_dechiffre)
 
+
+cylinder = charger_cylindre("cylinderWiki.txt")
+key = [7, 9, 5, 10, 1, 6, 3, 8, 2, 4]
+encrypted_text = chiffrer_texte("RetreatNow", cylinder, key)
+print(encrypted_text)  # Doit afficher "OMKEGWPDFN"
+
+cylinder_1ARIT_MP = charger_cylindre("1ARIT-MP.txt")
+key_1ARIT_MP = [12, 16, 29, 6, 33, 9, 22, 15, 20, 3, 1, 30, 32, 36, 19, 10, 35, 27, 25, 26, 2, 18, 31, 14, 34, 17, 23, 7, 8, 21, 4, 13, 11, 24, 28, 5]
+decrypted_text = dechiffrer_texte("GRMYSGBOAAMQGDPEYVWLDFDQQQZXXVMSZFS", cylinder_1ARIT_MP, key_1ARIT_MP)
+print(decrypted_text)  # Doit afficher le texte déchiffré
